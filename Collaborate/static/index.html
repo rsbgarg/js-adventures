@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Collaborate</title>
+        
+        <script src="js/bcsocket.js"></script>             
+        <script src="js/share.uncompressed.js"></script>
+        <script src="js/textarea.js"></script>   <!-- helper to attach textarea to ShareJS server -->
+        <script src="js/client.js"></script>
+
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <style>
+        	#sharetext{
+        		width: 80%;
+        		height:50%;
+
+        	}
+
+        </style>
+        <!-- /NEW -->
+    </head>
+    <body>
+        <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">CLB</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#">Collaborate</a></li>
+          </ul>
+
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Collaborate</a></li>
+          </ul>
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </nav>
+        <div class="container">
+          <h1 class="header center orange-text">Collaborate</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">An OT based tool for real time text  collaboration</h5>
+          </div>
+          <div class="center" id="content">
+            
+                <!--<textarea id="textArea"  rows="10" cols="45"></textarea>-->
+                <textarea id='sharetext'></textarea>
+            
+            
+          </div>
+          <br><br>
+        </div>
+      
+        <footer>
+            <div class="footer-copyright">
+              <div class="container">
+                        Made by Rishabh Garg
+              </div>
+            </div>
+        </footer>
+        <script type="text/javascript">
+                    // get the textarea element 
+            var elem = document.getElementById("sharetext");
+            // connect to the server
+            var connection = sharejs.open('test', 'text', function(error, doc) {
+                // this function is called once the connection is opened
+                if (error) {
+                    console.log("ERROR:", error);
+                } else {
+                    // attach the ShareJS document to the textarea
+                    doc.attach_textarea(elem);
+                }
+            });
+        </script>
+    </body>
+</html>
